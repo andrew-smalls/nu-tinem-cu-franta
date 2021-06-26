@@ -60,11 +60,13 @@
 
 <div class="btn-group my_btn_group" role="group" >
 
+
     <button id="acceptBtn" type="submit" form="acceptForm" class="btn btn-success button_details">Accept</button>
     <button id="revokeBtn" type="submit" form="revokeForm" class="btn btn-success button_details" style="margin-left: 50px;">Revoke</button>
     <a th:href="@{/organization_photos_guests/{id}(id = ${org.id})}"><button type="button" class="btn btn-success button_details" style="margin-left: 50px;">View photos</button></a>
 
 </div>
+
 
 
 <div class="card text-white bg-primary mb-3 card-center" style="width: 50%; max-height: 300px; overflow:auto; margin-bottom: 100px;">
