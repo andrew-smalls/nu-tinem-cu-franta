@@ -59,4 +59,5 @@ public class OrganizationController {
         organizationService.deleteOrganization(id);
         return "redirect:home_page_admin";
     }
+
 }
