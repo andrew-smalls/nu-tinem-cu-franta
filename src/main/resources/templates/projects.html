@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Projects</title>
+</head>
+<body>
+<div>
+    <form action="addProject" method="post">
+        <input type="text" name="projectName" placeholder="Project name"/>
+        <input type="text" name="organizationName" placeholder="Organization name"/>
+        <input type="text" name="projectCoordinator" placeholder="Project Coordinator"/>
+        <button type="submit">Add new project</button>
+    </form>
+</div>
+<div>
+
+    <table>
+        <tr>
+            <th>projectName</th>
+            <th>organizationName</th>
+            <th>projectCoordinator</th>
+            <th>projectStatus</th>
+
+        </tr>
+
+        <tr th:each="project : ${projects}">
+            <td th:text="${project.projectName}">1</td>
+            <td th:text="${project.organizationName}">Name</td>
+            <td th:text="${project.projectCoordinator}">Email</td>
+            <td th:text="${project.projectStatus}">Email</td>
+
+        </tr>
+    </table>
+</div>
+</body>
+</html>
