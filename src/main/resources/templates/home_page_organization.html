@@ -38,7 +38,8 @@
             /*<![CDATA[*/
             const pictureElem=document.querySelector("#profilePict");
             let profilePicture = /*[[${profilePhoto}]]*/ 'default';
-            console.log(profilePicture);
+            let org = /*[[${organization}]]*/ 'default';
+            console.log(org);
 
             if(profilePicture.image==null){
                 pictureElem.src="../images/notifications.jpg";
@@ -47,7 +48,7 @@
             /*]]>*/
         </script>
     </div>
-    <h1 style="text-align: center; display: block; margin-left: auto; margin-right: auto; margin-top: 10px; font-size: 20px;"><span></span>Name</h1>
+    <h1 style="text-align: center; display: block; margin-left: auto; margin-right: auto; margin-top: 10px; font-size: 20px;" th:text="${organization.name}"></h1>
 </div>
 
 <h1 class="title_center display-2" style="text-align: center; display: block; margin-left: auto; margin-right: auto; margin-top: 100px;"><span></span>Organization's projects</h1>
