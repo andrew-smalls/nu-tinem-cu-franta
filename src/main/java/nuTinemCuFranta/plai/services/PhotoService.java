@@ -18,7 +18,7 @@ public class PhotoService {
 
     @Autowired
     private PhotoRepository photoRepository;
-    
+
     public void savePhoto(MultipartFile file, Long userId,Boolean isProfile){
         Photo photo=new Photo();
 
