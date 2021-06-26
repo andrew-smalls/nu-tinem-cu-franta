@@ -47,3 +47,8 @@ CREATE TABLE `plai_dev`.`photos` (
   `image` LONGBLOB NOT NULL ,
    `image_type` VARCHAR(30) NOT NULL ,
     `profile` BOOLEAN NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+
+--create project table
+CREATE TABLE `plai_dev`.`projects` ( `id` INT NOT NULL AUTO_INCREMENT , `project_name` VARCHAR(255) NOT NULL , `organization_name` VARCHAR(255) NOT NULL , `project_coordinator` VARCHAR(100) NOT NULL , `project_status` VARCHAR(50) NOT NULL ,  PRIMARY KEY (`id`), UNIQUE `project_name` (`project_name`)) ENGINE = InnoDB;
+
+

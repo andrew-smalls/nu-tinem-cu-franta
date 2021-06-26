@@ -1,15 +1,15 @@
 package nuTinemCuFranta.plai.controllers;
 
+import nuTinemCuFranta.plai.model.Organization;
 import nuTinemCuFranta.plai.model.Project;
 import nuTinemCuFranta.plai.model.User;
+import nuTinemCuFranta.plai.services.OrganizationService;
 import nuTinemCuFranta.plai.services.ProjectService;
 import nuTinemCuFranta.plai.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,25 +19,42 @@ public class ProjectController {
     @Autowired
     private ProjectService projectService;
 
-    @PostMapping("/addProject")
-    private String addUser(@RequestParam("projectName") String projectName,
-                           @RequestParam("organizationName") String organizationName,
-                           @RequestParam("projectCoordinator") String projectCoordinator
+    @Autowired
+    private OrganizationService organizationService;
 
+
+    @PostMapping("/addProject")
+    private String addProject(@RequestParam("projectName") String projectName,
+                           @RequestParam("projectCoordinator") String projectCoordinator,
+                           @RequestParam @ModelAttribute("organizationId") Long organizationId
                            ){
-        Project project = new Project(projectName, organizationName, projectCoordinator);
+        System.out.println("Ajuns");
+        System.out.println("Organization id is" + organizationId);
+
+        Project project = new Project(projectName, projectCoordinator);
+        project.setOrganizationId(organizationId);
         projectService.addProject(project);
 
-        return "redirect:/projects";
+        return "redirect:/" + organizationId + "/projects";
     }
 
-    @RequestMapping("/projects")
-    private String projectPage(Model model){
+    @RequestMapping("{organizationId}/projects") // example: /3/projects -> 3rd organization registered projects
+    private String projectPage(Model model, @PathVariable("organizationId") Long organizationId){
+
+        model.addAttribute("organizationId", organizationId);
 
         List<Project> projects = projectService.getProjects();
         model.addAttribute("projects", projects);
 
-        return "projects";
+        //System.out.println("Organization with projects: " + organization);
+        return "projects";// /" + organizationId;
+    }
+
+
+    @PostMapping("/deleteProject")
+    public String deleteProject(@RequestParam("projectId") Long id) {
+        projectService.deleteProject(id);
+        return "redirect:projects";
     }
 
 }

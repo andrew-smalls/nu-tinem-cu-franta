@@ -20,15 +20,16 @@ public class Project {
     )
     private Long id;
 
+    @Column(name = "organizationId")
+    private Long organizationId;
+
     private String projectName;
-    private String organizationName;
     private String projectCoordinator;
     private String projectStatus;
 
 
-    public Project(String projectName, String organizationName, String projectCoordinator) {
+    public Project(String projectName, String projectCoordinator) {
         this.projectName = projectName;
-        this.organizationName = organizationName;
         this.projectCoordinator = projectCoordinator;
         this.projectStatus = "In progress";
     }
@@ -50,7 +51,6 @@ public class Project {
         return "Project{" +
                 "id=" + id +
                 ", projectName='" + projectName + '\'' +
-                ", organizationName='" + organizationName + '\'' +
                 ", projectCoordinator='" + projectCoordinator + '\'' +
                 ", projectStatus='" + projectStatus + '\'' +
                 '}';
@@ -77,12 +77,12 @@ public class Project {
         this.projectName = projectName;
     }
 
-    public String getOrganizationName() {
-        return organizationName;
+    public Long getOrganizationId() {
+        return organizationId;
     }
 
-    public void setOrganizationName(String organizationName) {
-        this.organizationName = organizationName;
+    public void setOrganizationId(Long organizationId) {
+        this.organizationId = organizationId;
     }
 
     public String getProjectCoordinator() {
