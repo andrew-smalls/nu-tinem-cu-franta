@@ -2,6 +2,7 @@ package nuTinemCuFranta.plai.controllers;
 
 import nuTinemCuFranta.plai.model.Organization;
 import nuTinemCuFranta.plai.services.OrganizationService;
+import nuTinemCuFranta.plai.services.PhotoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,6 +23,9 @@ public class OrganizationController {
     @Autowired
     private OrganizationService organizationService;
 
+    @Autowired
+    private PhotoService photoService;
+
     @RequestMapping("/profile_configuration_organization")
     public String getProfileConfiguration(Model model) {
         Organization organization = new Organization();
@@ -33,16 +37,21 @@ public class OrganizationController {
     @PostMapping("/process_profile_organization")
     public String addOrganization(
             //@RequestParam("organizationId") Long organizationId,
+            @RequestParam("profile_picture")MultipartFile photo,
             @ModelAttribute("organization") Organization organization
     ) {
+
+        Long userId=Long.valueOf(3);
 
         // CKeditor adds paragraph tags around description and must be deleted
         String truncDesc = organization.getDescription();
         truncDesc = truncDesc.substring(3, truncDesc.length() - 6);
         organization.setDescription(truncDesc);
-        //organization.setId(organizationId);
+        organization.setId(userId); // hardcoded
+        organization.setName("numeHardcodat");
         organizationService.addOrganization(organization);
-        return "redirect:/login";
+        photoService.savePhoto(photo,userId,true);
+        return "redirect:/home_page_admin";
     }
 
     @PostMapping("/deleteOrganization")
