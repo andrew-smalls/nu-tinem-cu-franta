@@ -19,7 +19,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Menu</a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Add new project</a>
+                        <a class="dropdown-item" th:href="@{/addProject/}">Add new project</a>
                     </div>
                 </li>
                 <li class="nav-item">
@@ -69,14 +69,14 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row" th:each="proj:${projects}">
             <div class="cell"><!-- th:text="${org.name}">-->
-                <div class="cell_table">Plai</div>
+                <div class="cell_table" th:text="${proj.projectName}">Plai</div>
             </div>
-            <div class="cell">
+            <div class="cell" th:text="${proj.projectCoordinator}">
                 Andrei
             </div>
-            <div class="cell">
+            <div class="cell" th:text="${proj.projectStatus}">
                 Finished
             </div>
         </div>

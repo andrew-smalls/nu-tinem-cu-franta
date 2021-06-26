@@ -2,8 +2,10 @@ package nuTinemCuFranta.plai.controllers;
 
 import nuTinemCuFranta.plai.model.Organization;
 import nuTinemCuFranta.plai.model.Photo;
+import nuTinemCuFranta.plai.model.Project;
 import nuTinemCuFranta.plai.services.OrganizationService;
 import nuTinemCuFranta.plai.services.PhotoService;
+import nuTinemCuFranta.plai.services.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,6 +25,9 @@ public class OrganizationController {
 
     @Autowired
     private PhotoService photoService;
+
+    @Autowired
+    private ProjectService projectService;
 
     @RequestMapping("/profile_configuration_organization")
     public String getProfileConfiguration(Model model) {
@@ -66,6 +71,9 @@ public class OrganizationController {
         if(profilePhoto==null){
             profilePhoto=new Photo();
         }
+
+        List<Project> projects=projectService.getOrganizationProjects(orgId);
+        model.addAttribute("projects",projects);
         model.addAttribute("profilePhoto",profilePhoto);
         model.addAttribute("organization", organization);
         return "/home_page_organization";
