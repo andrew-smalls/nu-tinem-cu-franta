@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html lang="en">
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
@@ -32,39 +31,70 @@
 
 <div class="container_left" >
     <div class="circular--portrait1" style="display: block; margin-left: auto; margin-right: auto;">
-        <img id="profilePict" src="../images/notification.jpg"  />
+        <img id="profilePict" th:src="'data:image/'+${profilePhoto.imageType}+';base64,'+${profilePhoto.image}"  />
         <script th:inline="javascript">
-            /*<![CDATA[
+            /*<![CDATA[*/
             const pictureElem=document.querySelector("#profilePict");
-            let profilePicture = [[${profilePicture}]] 'default';
+            let profilePicture = /*[[${profilePhoto}]]*/ 'default';
             console.log(profilePicture);
 
             if(profilePicture.image==null){
-                pictureElem.src="../images/empty_picture.jpg";
+                pictureElem.src="../images/notifications.jpg";
             }
 
-            ]]>*/
+            /*]]>*/
         </script>
     </div>
-    <h1 style="text-align: center; display: block; margin-left: auto; margin-right: auto; margin-top: 10px;"><span></span>Contacts</h1>
-    <h1 style="text-align: center; display: block; margin-left: auto; margin-right: auto; margin-top: 10px;"><span></span>Representative</h1>
+    <h1 style="text-align: center; display: block; margin-left: auto; margin-right: auto; margin-top: 10px;" th:text="${org.webpageLink}"><span></span>Contacts</h1>
+
+    <h1 style="text-align: center; display: block; margin-left: auto; margin-right: auto; margin-top: 10px;" th:text="'Contact: '+${org.representativeFirstName}+' '+${org.representativeLastName}"><span></span>Representative</h1>
+    <h1 style="text-align: center; display: block; margin-left: auto; margin-right: auto; margin-top: 10px;" th:text="'PhoneNumber: '+${org.phoneNumber}"></h1>
 </div>
-<h1 class="title_center display-2" style="text-align: center; display: block; margin-left: auto; margin-right: auto; margin-top: 100px;"><span></span>Organization's name</h1>
+<h1 class="title_center display-2" style="text-align: center; display: block; margin-left: auto; margin-right: auto; margin-top: 100px;" th:text="${org.name}"><span></span>Organization's name</h1>
+<form th:action="@{/acceptOrganisation}" method="post" id="acceptForm">
+    <input type="hidden" name="orgId" th:value="${orgId}"/>
+</form>
+<form th:action="@{/revokeOrganisation}" method="post" id="revokeForm">
+    <input type="hidden" name="orgId" th:value="${orgId}"/>
+</form>
+
 <div class="btn-group my_btn_group" role="group" >
-    <button type="button" class="btn btn-success button_details">Accept</button>
-    <button type="button" class="btn btn-success button_details" style="margin-left: 50px;">Revoke</button>
+
+
+    <button id="acceptBtn" type="submit" form="acceptForm" class="btn btn-success button_details">Accept</button>
+    <button id="revokeBtn" type="submit" form="revokeForm" class="btn btn-success button_details" style="margin-left: 50px;">Revoke</button>
+    <a th:href="@{/organization_photos_guests/{id}(id = ${org.id})}"><button type="button" class="btn btn-success button_details" style="margin-left: 50px;">View photos</button></a>
+
 </div>
+
 
 
 <div class="card text-white bg-primary mb-3 card-center" style="width: 50%; max-height: 300px; overflow:auto; margin-bottom: 100px;">
     <div class="card-body">
         <h5 class="card-title">Description</h5>
-        <p class="card-text">Some quick example text to build on the card and make up the bulk of the card's content. Some quick example text to build on the card and make up the bulk of the card's content. Some quick example text to build on the card and make up the bulk of the card's content. Some quick example text to build on the card and make up the bulk of the card's content. Some quick example text to build on the card and make up the bulk of the card's content. Some quick example text to build on the card and make up the bulk of the card's content. Some quick example text to build on the card and make up the bulk of the card's content. Some quick example text to build on the card and make up the bulk of the card's content. Some quick example text to build on the card and make up the bulk of the card's content.</p>
+        <p class="card-text" th:text="${org.description}">Some quick example text to build on the card and make up the bulk of the card's content. Some quick example text to build on the card and make up the bulk of the card's content. Some quick example text to build on the card and make up the bulk of the card's content. Some quick example text to build on the card and make up the bulk of the card's content. Some quick example text to build on the card and make up the bulk of the card's content. Some quick example text to build on the card and make up the bulk of the card's content. Some quick example text to build on the card and make up the bulk of the card's content. Some quick example text to build on the card and make up the bulk of the card's content. Some quick example text to build on the card and make up the bulk of the card's content.</p>
         <h5 class="card-title">Documents</h5>
         <p class="card-text">Some quick example text to build on the card and make up the bulk of the card's content.</p>
 
     </div>
 </div>
-<div style="margin-bottom:  1600px;"></div>
+
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    let acceptBtn=document.getElementById('acceptBtn');
+    let revokeBtn=document.getElementById('revokeBtn');
+
+    let status = /*[[${org.status}]]*/ 'default';
+    console.log('ceva');
+    if(status!='pending'){
+        acceptBtn.classList.add("hidden");
+        revokeBtn.classList.add("hidden");
+    }
+
+    /*]]>*/
+</script>
+
+<div style="margin-bottom:  1000px;"></div>
+
 </body>
 </html>

@@ -25,7 +25,17 @@ public class OrganizationService {
         return (List<Organization>) organizationRepository.findAll();
     }
 
+    public List<Organization> searchOrganizations(String text){
+        return organizationRepository.findByText(text);
+    }
+
     public void deleteOrganization(Long id){
         organizationRepository.deleteById(id);
+    }
+
+    public void updateOrganisationStatus(Long id,String status){
+        Organization organization = organizationRepository.findById(id).get();
+        organization.setStatus(status);
+        organizationRepository.save(organization);
     }
 }
