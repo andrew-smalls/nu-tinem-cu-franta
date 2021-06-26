@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>My Profile</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/flatly/bootstrap.min.css" integrity="sha384-qF/QmIAj5ZaYFAeQcrQ6bfVMAh4zZlrGwTPY7T/M+iTTLJqJBJjwwnsE5Y0mV7QK" crossorigin="anonymous">
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+  <link th:href="@{/css/styles.css}" rel="stylesheet" />
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid">
+    <a class="navbar-brand" th:href="@{/home_page_admin}">Plai</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/logout}">Logout</a>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container_left" >
+  <div class="circular--portrait1" style="display: block; margin-left: auto; margin-right: auto;">
+    <img id="profilePict" src="../images/notification.jpg"  />
+    <script th:inline="javascript">
+      /*<![CDATA[
+      const pictureElem=document.querySelector("#profilePict");
+      let profilePicture = [[${profilePicture}]] 'default';
+      console.log(profilePicture);
+
+      if(profilePicture.image==null){
+          pictureElem.src="../images/empty_picture.jpg";
+      }
+
+      ]]>*/
+    </script>
+  </div>
+  <h1 style="text-align: center; display: block; margin-left: auto; margin-right: auto; margin-top: 20px;"><span></span>Name</h1>
+  <h1 style="text-align: center; display: block; margin-left: auto; margin-right: auto; margin-top: 20px;"><span></span>Contact data</h1>
+  <h1 style="text-align: center; display: block; margin-left: auto; margin-right: auto; margin-top: 20px;"><span></span>Organizations:</h1>
+  <h1 style="text-align: center; display: block; margin-left: auto; margin-right: auto; margin-top: 10px; font-size: 20px;"><span></span>Organization1:</h1>
+  <h1 style="text-align: center; display: block; margin-left: auto; margin-right: auto; margin-top: 10px; font-size: 20px;"><span></span>Organization2:</h1>
+  <h1 style="text-align: center; display: block; margin-left: auto; margin-right: auto; margin-top: 10px; font-size: 20px;"><span></span>Organization3:</h1>
+  <h1 style="text-align: center; display: block; margin-left: auto; margin-right: auto; margin-top: 20px;"><span></span>History</h1>
+</div>
+<h1 class="title_center display-2" style="text-align: center; display: block; margin-left: auto; margin-right: auto; margin-top: 100px;"><span></span>My profile</h1>
+
+
+
+<div class="card text-white bg-primary mb-3 card-center" style="width: 50%; max-height: 300px; overflow:auto; margin-bottom: 100px;">
+  <div class="card-body">
+    <h5 class="card-title">Description</h5>
+    <p class="card-text">Some quick example text to build on the card and make up the bulk of the card's content. Some quick example text to build on the card and make up the bulk of the card's content. Some quick example text to build on the card and make up the bulk of the card's content. Some quick example text to build on the card and make up the bulk of the card's content. Some quick example text to build on the card and make up the bulk of the card's content. Some quick example text to build on the card and make up the bulk of the card's content. Some quick example text to build on the card and make up the bulk of the card's content. Some quick example text to build on the card and make up the bulk of the card's content. Some quick example text to build on the card and make up the bulk of the card's content.</p>
+    <h5 class="card-title">Interests</h5>
+    <p class="card-text">Some quick example text to build on the card and make up the bulk of the card's content.</p>
+
+  </div>
+</div>
+<div style="margin-bottom:  1000px;"></div>
+
+</body>
+</html>

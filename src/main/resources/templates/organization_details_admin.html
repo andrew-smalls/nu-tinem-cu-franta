@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Centrul Cultural Plai</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/flatly/bootstrap.min.css" integrity="sha384-qF/QmIAj5ZaYFAeQcrQ6bfVMAh4zZlrGwTPY7T/M+iTTLJqJBJjwwnsE5Y0mV7QK" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <link th:href="@{/css/styles.css}" rel="stylesheet" />
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid">
+        <a class="navbar-brand" th:href="@{/home_page_admin}">Plai</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarColor01">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <img src="../images/notification.jpg" href="#" class="notification"></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/logout}">Logout</a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container_left" >
+    <div class="circular--portrait1" style="display: block; margin-left: auto; margin-right: auto;">
+        <img id="profilePict" th:src="'data:image/'+${profilePhoto.imageType}+';base64,'+${profilePhoto.image}"  />
+        <script th:inline="javascript">
+            /*<![CDATA[*/
+            const pictureElem=document.querySelector("#profilePict");
+            let profilePicture = /*[[${profilePhoto}]]*/ 'default';
+            console.log(profilePicture);
+
+            if(profilePicture.image==null){
+                pictureElem.src="../images/notifications.jpg";
+            }
+
+            /*]]>*/
+        </script>
+    </div>
+    <h1 style="text-align: center; display: block; margin-left: auto; margin-right: auto; margin-top: 10px;" th:text="${org.webpageLink}"><span></span>Contacts</h1>
+
+    <h1 style="text-align: center; display: block; margin-left: auto; margin-right: auto; margin-top: 10px;" th:text="'Contact: '+${org.representativeFirstName}+' '+${org.representativeLastName}"><span></span>Representative</h1>
+    <h1 style="text-align: center; display: block; margin-left: auto; margin-right: auto; margin-top: 10px;" th:text="'PhoneNumber: '+${org.phoneNumber}"></h1>
+</div>
+<h1 class="title_center display-2" style="text-align: center; display: block; margin-left: auto; margin-right: auto; margin-top: 100px;" th:text="${org.name}"><span></span>Organization's name</h1>
+<form th:action="@{/acceptOrganisation}" method="post" id="acceptForm">
+    <input type="hidden" name="orgId" th:value="${orgId}"/>
+</form>
+<form th:action="@{/revokeOrganisation}" method="post" id="revokeForm">
+    <input type="hidden" name="orgId" th:value="${orgId}"/>
+</form>
+
+<div class="btn-group my_btn_group" role="group" >
+
+
+    <button id="acceptBtn" type="submit" form="acceptForm" class="btn btn-success button_details">Accept</button>
+    <button id="revokeBtn" type="submit" form="revokeForm" class="btn btn-success button_details" style="margin-left: 50px;">Revoke</button>
+    <a th:href="@{/organization_photos_guests/{id}(id = ${org.id})}"><button type="button" class="btn btn-success button_details" style="margin-left: 50px;">View photos</button></a>
+
+</div>
+
+
+
+<div class="card text-white bg-primary mb-3 card-center" style="width: 50%; max-height: 300px; overflow:auto; margin-bottom: 100px;">
+    <div class="card-body">
+        <h5 class="card-title">Description</h5>
+        <p class="card-text" th:text="${org.description}">Some quick example text to build on the card and make up the bulk of the card's content. Some quick example text to build on the card and make up the bulk of the card's content. Some quick example text to build on the card and make up the bulk of the card's content. Some quick example text to build on the card and make up the bulk of the card's content. Some quick example text to build on the card and make up the bulk of the card's content. Some quick example text to build on the card and make up the bulk of the card's content. Some quick example text to build on the card and make up the bulk of the card's content. Some quick example text to build on the card and make up the bulk of the card's content. Some quick example text to build on the card and make up the bulk of the card's content.</p>
+        <h5 class="card-title">Documents</h5>
+        <p class="card-text">Some quick example text to build on the card and make up the bulk of the card's content.</p>
+
+    </div>
+</div>
+
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    let acceptBtn=document.getElementById('acceptBtn');
+    let revokeBtn=document.getElementById('revokeBtn');
+
+    let status = /*[[${org.status}]]*/ 'default';
+    console.log('ceva');
+    if(status!='pending'){
+        acceptBtn.classList.add("hidden");
+        revokeBtn.classList.add("hidden");
+    }
+
+    /*]]>*/
+</script>
+
+<div style="margin-bottom:  1000px;"></div>
+
+</body>
+</html>
