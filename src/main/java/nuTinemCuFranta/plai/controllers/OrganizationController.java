@@ -39,7 +39,7 @@ public class OrganizationController {
             @ModelAttribute("organization") Organization organization
     ) {
 
-        Long userId=Long.valueOf(3);
+        Long userId=Long.valueOf(3); // TODO this should be removed when working with real ids
 
         // CKeditor adds paragraph tags around description and must be deleted
         String truncDesc = organization.getDescription();
@@ -60,7 +60,7 @@ public class OrganizationController {
 
     @RequestMapping("/home_page_organization/{orgId}")
     public String getOrganizationHomePage(@PathVariable("orgId") Long orgId, Model model) {
-        Organization organization = new Organization();
+        Organization organization = organizationService.getOrganization(orgId);
         //model.addAttribute("organizationId",organizationId);
         Photo profilePhoto=photoService.getProfilePhoto(orgId);
         if(profilePhoto==null){
