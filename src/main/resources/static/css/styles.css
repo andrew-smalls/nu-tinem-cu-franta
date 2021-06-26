@@ -66,3 +66,31 @@
 .button_cell {
     text-align: center;
 }
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-control {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.col-form-label {
+    font-size: 30px;
+}
+
+.container{
+    max-width: 960px;
+}
+
+.info-text {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 50px;
+}
+
+
