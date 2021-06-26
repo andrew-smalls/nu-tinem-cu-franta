@@ -58,10 +58,15 @@ public class OrganizationController {
         return "redirect:home_page_admin";
     }
 
-    @RequestMapping("/home_page_organization")
-    public String getOrganizationHomePage(Model model) {
+    @RequestMapping("/home_page_organization/{orgId}")
+    public String getOrganizationHomePage(@PathVariable("orgId") Long orgId, Model model) {
         Organization organization = new Organization();
         //model.addAttribute("organizationId",organizationId);
+        Photo profilePhoto=photoService.getProfilePhoto(orgId);
+        if(profilePhoto==null){
+            profilePhoto=new Photo();
+        }
+        model.addAttribute("profilePhoto",profilePhoto);
         model.addAttribute("organization", organization);
         return "/home_page_organization";
     }

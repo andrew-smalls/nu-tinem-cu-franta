@@ -31,6 +31,25 @@
     </div>
 </nav>
 
+<div class="container_left" >
+    <div class="circular--portrait1" style="display: block; margin-left: auto; margin-right: auto;">
+        <img id="profilePict" th:src="'data:image/'+${profilePhoto.imageType}+';base64,'+${profilePhoto.image}"/>
+        <script th:inline="javascript">
+            /*<![CDATA[*/
+            const pictureElem=document.querySelector("#profilePict");
+            let profilePicture = /*[[${profilePhoto}]]*/ 'default';
+            console.log(profilePicture);
+
+            if(profilePicture.image==null){
+                pictureElem.src="../images/notifications.jpg";
+            }
+
+            /*]]>*/
+        </script>
+    </div>
+    <h1 style="text-align: center; display: block; margin-left: auto; margin-right: auto; margin-top: 10px; font-size: 20px;"><span></span>Name</h1>
+</div>
+
 <h1 class="title_center display-2" style="text-align: center; display: block; margin-left: auto; margin-right: auto; margin-top: 100px;"><span></span>Organization's projects</h1>
 
 
