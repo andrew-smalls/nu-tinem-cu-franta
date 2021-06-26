@@ -130,10 +130,11 @@
 }
 
 .search {
-    max-width: 25%;
-    float: right;
-    margin-top: 50px;
-    margin-right: 50px;
+    margin-top: 100px;
+    width: 800px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 form.search input[type=text] {
@@ -214,7 +215,7 @@ form.search::after {
 .my_btn_group {
     margin: 0;
     position: absolute;
-    top: 50%;
+    top: 400px;
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
@@ -231,7 +232,7 @@ form.search::after {
 
     margin: 0;
     position: absolute;
-    top: 70%;
+    top: 1300px;
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
@@ -251,5 +252,16 @@ form.search::after {
     justify-content: center; /* align horizontal */
     align-items: center; /* align vertical */
     min-height: 100px;
+}
 
+.carousel {
+    margin: 0;
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    overflow: hidden;
+    top: 800px;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 }

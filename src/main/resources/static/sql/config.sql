@@ -51,7 +51,7 @@ CREATE TABLE `plai_dev`.`photos` (
 -- creare tabel notificari
 CREATE TABLE `notifications` (
                                  `id` int(11) NOT NULL AUTO_INCREMENT,
-                                 `userId` int(11) NOT NULL,
+                                 `user_id` int(11) NOT NULL,
                                  `content` text NOT NULL,
                                  `type` int(11) NOT NULL,
                                  `date` datetime NOT NULL,
