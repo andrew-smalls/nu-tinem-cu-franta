@@ -93,4 +93,57 @@
     margin-bottom: 50px;
 }
 
+.search {
+    max-width: 25%;
+    float: right;
+    margin-top: 50px;
+    margin-right: 50px;
+}
 
+form.search input[type=text] {
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid grey;
+    float: left;
+    width: 80%;
+    background: #f1f1f1;
+}
+
+/* Style the submit button */
+form.search button {
+    float: left;
+    width: 20%;
+    padding: 10px;
+    background: #2c3e50;
+    color: white;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-left: none; /* Prevent double borders */
+    cursor: pointer;
+}
+
+form.search button:hover {
+    background: #2c3e50;
+}
+
+/* Clear floats */
+form.search::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.circular--portrait1_table {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    border-radius: 15%;
+    border: 5px solid #555;
+    padding: 0;
+}
+
+.circular--portrait1_table img {
+    width: 100%;
+    height: 100%;
+}
