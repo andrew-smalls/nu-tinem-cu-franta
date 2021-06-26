@@ -28,6 +28,7 @@ CREATE TABLE `plai_dev`.`users` (
        UNIQUE `password` (`password`),
         UNIQUE `email` (`email`)) ENGINE = InnoDB;
 
+-- creare tabel organizatii
 CREATE TABLE `plai_dev`.`organizations` (
     `id` INT NOT NULL ,
      `name` VARCHAR(100) NOT NULL ,
@@ -38,3 +39,11 @@ CREATE TABLE `plai_dev`.`organizations` (
         `description` TEXT , `webpage_link` TEXT ,
          `facebook_link` TEXT ,
           `type` VARCHAR(50) ) ENGINE = InnoDB;
+
+-- creare tabel fotografii
+CREATE TABLE `plai_dev`.`photos` (
+    `id` INT NOT NULL AUTO_INCREMENT ,
+ `user_id` INT NOT NULL ,
+  `image` LONGBLOB NOT NULL ,
+   `image_type` VARCHAR(30) NOT NULL ,
+    `profile` BOOLEAN NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
