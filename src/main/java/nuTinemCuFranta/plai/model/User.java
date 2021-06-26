@@ -10,20 +10,23 @@ import java.util.Objects;
 public class User {
 
     @Id
-    @GeneratedValue(
-            strategy= GenerationType.AUTO,
-            generator="native"
-    )
-    @GenericGenerator(
-            name = "native",
-            strategy = "native"
-    )
+    @GeneratedValue( strategy= GenerationType.IDENTITY, generator="native")
+    @GenericGenerator( name = "native", strategy = "native" )
     private Long id;
 
+    @Column(name = "first_name", nullable = false, length = 50)
     private String firstName;
+
+    @Column(name = "last_name", nullable = false, length = 50)
     private String lastName;
+
+    @Column(name = "email", nullable = false, unique = true, length = 100)
     private String email;
+
+    @Column(name = "password", nullable = false, length = 260)
     private String password;
+
+    @Column(name = "role", nullable = false)
     private String role;
 
     public User() {
@@ -42,7 +45,7 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return id == user.id;
+        return id.equals(user.id);
     }
 
     @Override
@@ -60,6 +63,8 @@ public class User {
                 ", role='" + role + '\'' +
                 '}';
     }
+
+    // getters and setters:
 
     public Long getId() {
         return id;
