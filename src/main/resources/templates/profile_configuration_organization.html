@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile configuration - organization</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/flatly/bootstrap.min.css" integrity="sha384-qF/QmIAj5ZaYFAeQcrQ6bfVMAh4zZlrGwTPY7T/M+iTTLJqJBJjwwnsE5Y0mV7QK" crossorigin="anonymous">
+    <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
+    <link th:href="@{/css/styles.css}" rel="stylesheet" />
+</head>
+<body>
+<div class="container text-center">
+    <div>
+        <h1 style="margin-bottom: 60px;">Profile Configuration</h1>
+    </div>
+    <div>
+        <h2 class="info-text"><br>The following information is essential in order </br>for your organization to be accepted. </br>Make sure you give accurate info.</br></b></h2>
+    </div>
+    <form th:action="@{/process_profile_organization}"  method="post" style="max-width: 600px; margin: 0 auto;" th:object="${organization}" enctype="multipart/form-data"> <!-- userCredentials sent by registrationController -->
+        <fieldset>
+            <div class="m-3">
+                <div class="form-group form-row">
+                    <label for="InputAddress" class="col-form-label col-4">Address:</label>
+                    <div class="col-8">
+                        <!--<input type="hidden" th:value="${organizationId}" name="organizationId"/> -->
+                        <input type="text" th:field="*{address}" name="address" class="form-control" id="InputAddress" placeholder="Enter address" minlength="2" maxlength="100" required>
+                    </div>
+                </div>
+                <div class="form-group form-row">
+                    <label for="InputPhone" class="col-form-label col-4">Phone number:</label>
+                    <div class="col-8">
+                        <input type="number" th:field="*{phoneNumber}" name="phoneNumber" class="form-control" id="InputPhone" placeholder="Enter phone number" minlength="10" maxlength="10" required>
+                    </div>
+                </div>
+                <div class="form-group form-row">
+                    <label for="InputFirstName" class="col-form-label col-4">First name:</label>
+                    <div class="col-8">
+                        <input type="text" th:field="*{representativeFirstName}" name="representativeFirstName" class="form-control" id="InputFirstName" placeholder="Enter first name of the representative" required>
+                    </div>
+                </div>
+                <div class="form-group form-row">
+                    <label for="InputLastName" class="col-form-label col-4">Last name:</label>
+                    <div class="col-8">
+                        <input type="text" th:field="*{representativeLastName}" name="representativeLastName" class="form-control" id="InputLastName" placeholder="Enter last name" minlength="2" maxlength="50" required>
+                    </div>
+                </div>
+                <div class="form-group form-row">
+                    <label for="InputWebLink" class="col-form-label col-4">Webpage link:</label>
+                    <div class="col-8">
+                        <input type="text" th:field="*{webpageLink}" name="webpageLink" class="form-control" id="InputWebLink" placeholder="Enter webpage link" minlength="2" maxlength="50">
+                    </div>
+                </div>
+                <div class="form-group form-row">
+                    <label for="InputFacebookLink" class="col-form-label col-4">Facebook link:</label>
+                    <div class="col-8">
+                        <input type="text" th:field="*{facebookLink}" name="facebookLink" class="form-control" id="InputFacebookLink" placeholder="Enter facebook link" minlength="2" maxlength="50">
+                    </div>
+                </div>
+                <div class="form-group" style="margin-top: 20px; margin-bottom: 40px; font-size:28px;">
+                    <label><b>Now add a short description about your organization:</b></label>
+                    <div>
+                        <textarea name="description" th:field="*{description}"></textarea>
+                        <script>
+                            CKEDITOR.replace('description');
+                        </script>
+                    </div>
+                </div>
+                <!--<div class="form-group form-row">
+                    <label for="InputType" class="col-form-label col-4">Type:</label>
+                    <div class="col-8">
+                        <input type="text" th:field="*{type}" name="type" class="form-control" id="InputType" placeholder="Enter type" minlength="2" maxlength="50">
+                    </div>
+                </div>-->
+                <div class="form-group form-row">
+                    <label for="InputType" class="col-form-label col-4">Example select</label>
+                    <select class="form-select" th:field="*{type}" name="type" id="InputType" maxlength="50">
+                        <option th:value="'Option1'" th:text="Option1"></option>
+                        <option th:value="'Option2'" th:text="Option2"></option>
+                        <option th:value="'Option3'" th:text="Option3"></option>
+                        <option th:value="'Option4'" th:text="Option4"></option>
+                        <option th:value="'Option5'" th:text="Option5"></option>
+                        <option th:value="'Option6'" th:text="Option6"></option>
+                    </select>
+                </div>
+                <div>
+                    <label style="margin-top: 40px; margin-bottom: 40px; font-size:28px;" for="photo"><b>One last step, choose a profile picture which represent:</b></label>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-image" viewBox="0 0 16 16">
+                                  <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                                  <path d="M2.002 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2h-12zm12 1a1 1 0 0 1 1 1v6.5l-3.777-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12V3a1 1 0 0 1 1-1h12z"/>
+                            </svg></span>
+
+                        </div>
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" name="profile_picture" id="photo">
+                            <label class="custom-file-label" for="photo">Choose a photo</label>
+                            <span class="oi oi-image"></span>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" style="margin-top: 30px;" class="btn btn-primary">Submit</button>
+            </div>
+        </fieldset>
+    </form>
+
+
+
+
+</div>
+</body>
+</html>
