@@ -16,6 +16,7 @@ public class MailerService {
     private MailContentBuilder mailContentBuilder;
 
     public void prepareAndSend(String recipient,String message,String subject,String from){
+
         MimeMessagePreparator messagePreparator=mimeMessage -> {
             MimeMessageHelper messageHelper=new MimeMessageHelper(mimeMessage);
             messageHelper.setFrom(from);

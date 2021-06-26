@@ -29,7 +29,6 @@ public class LoginController {
     public String proccesLogin( User user){
         return "redirect:/home_page_admin";
     }
-
      */
 
     @RequestMapping("/register")
