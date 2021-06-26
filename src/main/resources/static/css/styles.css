@@ -66,3 +66,7 @@
 .button_cell {
     text-align: center;
 }
+
+.hidden {
+    display: none;
+}
