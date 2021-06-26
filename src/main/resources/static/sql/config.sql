@@ -17,4 +17,24 @@ GRANT ALTER ON plai_dev.* to 'plai_dev_user'@'localhost';
 GRANT ALTER ON plai_dev.* to 'plai_dev_user'@'%';
 
 -- creare tabel user
-CREATE TABLE `plai_dev`.`users` ( `id` INT NOT NULL AUTO_INCREMENT , `first_name` VARCHAR(50) NOT NULL , `last_name` VARCHAR(50) NOT NULL , `email` VARCHAR(100) NOT NULL , `password` VARCHAR(260) NOT NULL , `role` VARCHAR(50) NOT NULL , PRIMARY KEY (`id`), UNIQUE `password` (`password`), UNIQUE `email` (`email`)) ENGINE = InnoDB;
+CREATE TABLE `plai_dev`.`users` (
+    `id` INT NOT NULL AUTO_INCREMENT ,
+    `first_name` VARCHAR(50) NOT NULL ,
+     `last_name` VARCHAR(50) NOT NULL ,
+      `email` VARCHAR(100) NOT NULL ,
+    `password` VARCHAR(260) NOT NULL ,
+     `role` VARCHAR(50) NOT NULL ,
+      PRIMARY KEY (`id`),
+       UNIQUE `password` (`password`),
+        UNIQUE `email` (`email`)) ENGINE = InnoDB;
+
+CREATE TABLE `plai_dev`.`organizations` (
+    `id` INT NOT NULL ,
+     `name` VARCHAR(100) NOT NULL ,
+    `address` VARCHAR(100) NOT NULL ,
+     `phone_number` VARCHAR(10) NOT NULL ,
+      `representative_first_name` VARCHAR(50) NOT NULL ,
+       `representative_last_name` VARCHAR(50) NOT NULL ,
+        `description` TEXT , `webpage_link` TEXT ,
+         `facebook_link` TEXT ,
+          `type` VARCHAR(50) ) ENGINE = InnoDB;
