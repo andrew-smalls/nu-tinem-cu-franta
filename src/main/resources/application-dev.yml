@@ -10,3 +10,7 @@ spring:
     database-platform: org.hibernate.dialect.MySQL8Dialect #org.hibernate.dialect.MySQL5InnoDBDialect
     database: mysql
     show-sql: true
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
