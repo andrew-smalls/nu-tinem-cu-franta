@@ -26,6 +26,8 @@ public class User {
     @Column(name = "password", nullable = false, length = 260)
     private String password;
 
+    private String confirmPassword;
+
     @Column(name = "role", nullable = false)
     private String role;
 
@@ -104,6 +106,14 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getConfirmPassword(){
+        return confirmPassword;
+    }
+
+    public void setConfirmPassword(String confirmPassword){
+        this.confirmPassword = confirmPassword;
     }
 
     public String getRole() {

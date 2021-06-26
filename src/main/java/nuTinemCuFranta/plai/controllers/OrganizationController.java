@@ -6,16 +6,11 @@ import nuTinemCuFranta.plai.services.PhotoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
-
-import java.io.IOException;
-import nuTinemCuFranta.plai.services.OrganizationService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 public class OrganizationController {
@@ -41,11 +36,12 @@ public class OrganizationController {
             @ModelAttribute("organization") Organization organization
     ) {
 
-        Long userId=Long.valueOf(3);
+        Long userId= 3L;
 
         // CKeditor adds paragraph tags around description and must be deleted
         String truncDesc = organization.getDescription();
         truncDesc = truncDesc.substring(3, truncDesc.length() - 6);
+
         organization.setDescription(truncDesc);
         organization.setId(userId); // hardcoded
         organization.setName("numeHardcodat");

@@ -10,8 +10,9 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container-fluid">
+
             <li class="nav-item">
-                <img src="../images/logoplai.png" th:href="@{/home_page_admin}" class="notification"></a>
+                <img src="../images/logoplai.png" th:href="@{/index.html}" class="notification"></a>
             </li>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01"
@@ -23,7 +24,7 @@
                 <ul class="navbar-nav ml-auto">
 
                     <li class="nav-item">
-                        <a class="nav-link" href="/login.html">Login</a>
+                        <a class="nav-link" th:action="@{/loginUser.html}" href="loginUser.html">Login</a>
                     </li>
 
                 </ul>

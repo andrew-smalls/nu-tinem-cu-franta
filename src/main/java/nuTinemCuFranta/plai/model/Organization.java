@@ -25,7 +25,10 @@ public class Organization {
     public Organization() {
     }
 
-    public Organization(Long id, String name, String address, String phoneNumber, String representativeFirstName, String representativeLastName, String description, String webpageLink, String facebookLink, String type) {
+    public Organization(Long id, String name, String address, String phoneNumber,
+                        String representativeFirstName, String representativeLastName,
+                        String description, String webpageLink, String facebookLink, String type) {
+
         this.id = id;
         this.name = name;
         this.address = address;
