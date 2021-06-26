@@ -17,4 +17,12 @@ public class VolunteerController {
 
         return "/home_page_volunteer";
     }
+
+    @RequestMapping("/profile_volunteer")
+    public String getVolunteerProfile(Model model){
+
+
+        return "/profile_volunteer";
+    }
+
 }
