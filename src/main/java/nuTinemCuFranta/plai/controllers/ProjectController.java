@@ -26,10 +26,9 @@ public class ProjectController {
     @PostMapping("/addProject")
     private String addProject(@RequestParam("projectName") String projectName,
                            @RequestParam("projectCoordinator") String projectCoordinator,
-                           @RequestParam @ModelAttribute("organizationId") Long organizationId
+                           @RequestParam("organizationId") Long organizationId
                            ){
-        System.out.println("Ajuns");
-        System.out.println("Organization id is" + organizationId);
+
 
         Project project = new Project(projectName, projectCoordinator);
         project.setOrganizationId(organizationId);

@@ -8,6 +8,7 @@
 <div>
     <form th:action="@{../addProject}" method="post">
         <input type="text" name="projectName" placeholder="Project name"/>
+        <input type="hidden" name="organizationId" th:value="${organizationId}"/>
         <input type="text" name="projectCoordinator" placeholder="Project Coordinator"/>
         <button type="submit">Add new project</button>
     </form>
