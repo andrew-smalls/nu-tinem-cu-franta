@@ -27,6 +27,9 @@ public class Project {
     private String projectCoordinator;
     private String projectStatus;
 
+    private String projectDescription;
+    private Double[] projectLocation;
+
 
     public Project(String projectName, String projectCoordinator) {
         this.projectName = projectName;
@@ -101,4 +104,19 @@ public class Project {
         this.projectStatus = projectStatus;
     }
 
+    public String getProjectDescription() {
+        return projectDescription;
+    }
+
+    public void setProjectDescription(String projectDescription) {
+        this.projectDescription = projectDescription;
+    }
+
+    public Double[] getProjectLocation() {
+        return projectLocation;
+    }
+
+    public void setProjectLocation(Double[] projectLocation) {
+        this.projectLocation = projectLocation;
+    }
 }
