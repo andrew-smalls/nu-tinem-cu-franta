@@ -10,13 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
 import java.util.List;
 
-import nuTinemCuFranta.plai.services.OrganizationService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -71,7 +66,7 @@ public class OrganizationController {
         return "/home_page_organization";
     }
 
-    @RequestMapping("/organization_photos_guests/{orgId}")
+    @RequestMapping("/organization_photos/{orgId}")
     public String getOrganizationPhotosGuests(@PathVariable("orgId") Long orgId,Model model) {
 
         List<Photo> photos=photoService.getPhotos(orgId);
@@ -82,7 +77,7 @@ public class OrganizationController {
         model.addAttribute("profilePhoto",profilePhoto);
         model.addAttribute("photos",photos);
         model.addAttribute("organization", orgId);
-        return "/organization_photos_guests";
+        return "organization_photos";
     }
 
 
