@@ -32,4 +32,10 @@ public class OrganizationService {
     public void deleteOrganization(Long id){
         organizationRepository.deleteById(id);
     }
+
+    public void updateOrganisationStatus(Long id,String status){
+        Organization organization = organizationRepository.findById(id).get();
+        organization.setStatus(status);
+        organizationRepository.save(organization);
+    }
 }
