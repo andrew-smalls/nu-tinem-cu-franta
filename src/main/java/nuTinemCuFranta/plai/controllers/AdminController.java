@@ -30,4 +30,11 @@ public class AdminController {
         model.addAttribute("count",notifications.size());
         return "/home_page_admin";
     }
+
+    @RequestMapping("/organization_details_admin")
+    public String getOrganizationDetails(Model model){
+
+        return "/organization_details_admin";
+    }
+
 }
