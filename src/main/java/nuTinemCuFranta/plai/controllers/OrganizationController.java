@@ -1,6 +1,7 @@
 package nuTinemCuFranta.plai.controllers;
 
 import nuTinemCuFranta.plai.model.Organization;
+import nuTinemCuFranta.plai.model.Photo;
 import nuTinemCuFranta.plai.services.OrganizationService;
 import nuTinemCuFranta.plai.services.PhotoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,11 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
-import nuTinemCuFranta.plai.services.OrganizationService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.DeleteMapping;
+import java.util.List;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -59,4 +57,33 @@ public class OrganizationController {
         organizationService.deleteOrganization(id);
         return "redirect:home_page_admin";
     }
+
+    @RequestMapping("/home_page_organization/{orgId}")
+    public String getOrganizationHomePage(@PathVariable("orgId") Long orgId, Model model) {
+        Organization organization = new Organization();
+        //model.addAttribute("organizationId",organizationId);
+        Photo profilePhoto=photoService.getProfilePhoto(orgId);
+        if(profilePhoto==null){
+            profilePhoto=new Photo();
+        }
+        model.addAttribute("profilePhoto",profilePhoto);
+        model.addAttribute("organization", organization);
+        return "/home_page_organization";
+    }
+
+    @RequestMapping("/organization_photos/{orgId}")
+    public String getOrganizationPhotosGuests(@PathVariable("orgId") Long orgId,Model model) {
+
+        List<Photo> photos=photoService.getPhotos(orgId);
+        Photo profilePhoto = photoService.getProfilePhoto(orgId);
+        if(profilePhoto==null){
+            profilePhoto=new Photo();
+        }
+        model.addAttribute("profilePhoto",profilePhoto);
+        model.addAttribute("photos",photos);
+        model.addAttribute("organization", orgId);
+        return "organization_photos";
+    }
+
+
 }
