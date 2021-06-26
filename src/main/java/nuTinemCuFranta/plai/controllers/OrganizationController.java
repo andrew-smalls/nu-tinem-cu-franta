@@ -59,5 +59,22 @@ public class OrganizationController {
         organizationService.deleteOrganization(id);
         return "redirect:home_page_admin";
     }
+    
+    @RequestMapping("/home_page_organization")
+    public String getOrganizationHomePage(Model model) {
+        Organization organization = new Organization();
+        //model.addAttribute("organizationId",organizationId);
+        model.addAttribute("organization", organization);
+        return "/home_page_organization";
+    }
+
+    @RequestMapping("/organization_photos_guests")
+    public String getOrganizationPhotosGuests(Model model) {
+        Organization organization = new Organization();
+        //model.addAttribute("organizationId",organizationId);
+        model.addAttribute("organization", organization);
+        return "/organization_photos_guests";
+    }
+
 
 }
