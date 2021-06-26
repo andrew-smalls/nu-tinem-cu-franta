@@ -78,7 +78,7 @@ public class AdminController {
     @PostMapping("/acceptOrganisation")
     public String acceptOrganisation(@RequestParam("orgId") Long orgId){
         organizationService.updateOrganisationStatus(orgId,"accepted");
-        mailerService.prepareAndSend("caracoancea.timotei@gmail.com",
+        mailerService.prepareAndSend("caracoancea.timotei@gmail.com", // TODO pune addresa de email a user-ului
                 "Organizatia dumneavoastra a fost acceptata. Puteti folosi aplicatia.",
                 "plaiApplicationRequest",
                 "plaiAssociation@gmail.com"
@@ -89,6 +89,11 @@ public class AdminController {
     @PostMapping("/revokeOrganisation")
     public String revokeOrganisation(@RequestParam("orgId") Long orgId){
         organizationService.updateOrganisationStatus(orgId,"revoked");
+        mailerService.prepareAndSend("caracoancea.timotei@gmail.com", // TODO pune addresa de email a user-ului
+                "Organizatia dumneavoastra nu a fost acceptata. Din pacate nu puteti folosi aplicatia.",
+                "plaiApplicationRequest",
+                "plaiAssociation@gmail.com"
+        );
         return "redirect:/organization_details_admin/"+orgId;
     }
 }

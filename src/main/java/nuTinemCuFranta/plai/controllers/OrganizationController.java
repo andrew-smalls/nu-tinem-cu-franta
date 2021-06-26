@@ -1,6 +1,7 @@
 package nuTinemCuFranta.plai.controllers;
 
 import nuTinemCuFranta.plai.model.Organization;
+import nuTinemCuFranta.plai.model.Photo;
 import nuTinemCuFranta.plai.services.OrganizationService;
 import nuTinemCuFranta.plai.services.PhotoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.List;
+
 import nuTinemCuFranta.plai.services.OrganizationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -59,7 +62,7 @@ public class OrganizationController {
         organizationService.deleteOrganization(id);
         return "redirect:home_page_admin";
     }
-    
+
     @RequestMapping("/home_page_organization")
     public String getOrganizationHomePage(Model model) {
         Organization organization = new Organization();
@@ -68,11 +71,17 @@ public class OrganizationController {
         return "/home_page_organization";
     }
 
-    @RequestMapping("/organization_photos_guests")
-    public String getOrganizationPhotosGuests(Model model) {
-        Organization organization = new Organization();
-        //model.addAttribute("organizationId",organizationId);
-        model.addAttribute("organization", organization);
+    @RequestMapping("/organization_photos_guests/{orgId}")
+    public String getOrganizationPhotosGuests(@PathVariable("orgId") Long orgId,Model model) {
+
+        List<Photo> photos=photoService.getPhotos(orgId);
+        Photo profilePhoto = photoService.getProfilePhoto(orgId);
+        if(profilePhoto==null){
+            profilePhoto=new Photo();
+        }
+        model.addAttribute("profilePhoto",profilePhoto);
+        model.addAttribute("photos",photos);
+        model.addAttribute("organization", orgId);
         return "/organization_photos_guests";
     }
 

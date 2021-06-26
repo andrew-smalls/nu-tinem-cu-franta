@@ -57,11 +57,12 @@
 <form th:action="@{/revokeOrganisation}" method="post" id="revokeForm">
     <input type="hidden" name="orgId" th:value="${orgId}"/>
 </form>
+
 <div class="btn-group my_btn_group" role="group" >
 
     <button id="acceptBtn" type="submit" form="acceptForm" class="btn btn-success button_details">Accept</button>
     <button id="revokeBtn" type="submit" form="revokeForm" class="btn btn-success button_details" style="margin-left: 50px;">Revoke</button>
-    <button type="button" class="btn btn-success button_details" style="margin-left: 50px;">View photos</button>
+    <a th:href="@{/organization_photos_guests/{id}(id = ${org.id})}"><button type="button" class="btn btn-success button_details" style="margin-left: 50px;">View photos</button></a>
 
 </div>
 
