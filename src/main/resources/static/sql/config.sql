@@ -47,3 +47,13 @@ CREATE TABLE `plai_dev`.`photos` (
   `image` LONGBLOB NOT NULL ,
    `image_type` VARCHAR(30) NOT NULL ,
     `profile` BOOLEAN NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+
+-- creare tabel notificari
+CREATE TABLE `notifications` (
+                                 `id` int(11) NOT NULL AUTO_INCREMENT,
+                                 `userId` int(11) NOT NULL,
+                                 `content` text NOT NULL,
+                                 `type` int(11) NOT NULL,
+                                 `date` datetime NOT NULL,
+                                 PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
