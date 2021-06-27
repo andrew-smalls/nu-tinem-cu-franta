@@ -10,7 +10,7 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container-fluid">
-        <a class="navbar-brand" th:href="@{/home_page_organization}">Plai</a>
+        <a class="navbar-brand" th:href="@{/home_page_organization/{organizationId}(organizationId = ${organizationId}) }">Plai</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -19,7 +19,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Menu</a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Add new project</a>
+                        <a class="dropdown-item" th:href="@{/addProject/}">Add new project</a>
                     </div>
                 </li>
                 <li class="nav-item">
@@ -31,11 +31,31 @@
     </div>
 </nav>
 
+<div class="container_left" >
+    <div class="circular--portrait1" style="display: block; margin-left: auto; margin-right: auto;">
+        <img id="profilePict" th:src="'data:image/'+${profilePhoto.imageType}+';base64,'+${profilePhoto.image}"/>
+        <script th:inline="javascript">
+            /*<![CDATA[*/
+            const pictureElem=document.querySelector("#profilePict");
+            let profilePicture = /*[[${profilePhoto}]]*/ 'default';
+            let org = /*[[${organization}]]*/ 'default';
+            console.log(org);
+
+            if(profilePicture.image==null){
+                pictureElem.src="../images/notifications.jpg";
+            }
+
+            /*]]>*/
+        </script>
+    </div>
+    <h1 style="text-align: center; display: block; margin-left: auto; margin-right: auto; margin-top: 10px; font-size: 20px;" th:text="${organization.name}"></h1>
+</div>
+
 <h1 class="title_center display-2" style="text-align: center; display: block; margin-left: auto; margin-right: auto; margin-top: 100px;"><span></span>Organization's projects</h1>
 
 
 <div class="container">
-    <div class="table" style="margin-top: 200px;">
+    <div class="table" style="margin-top: 300px;">
 
         <div class="row header blue">
             <div class="cell">
@@ -49,14 +69,16 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row" th:each="proj:${projects}">
             <div class="cell"><!-- th:text="${org.name}">-->
-                <div class="cell_table">Plai</div>
+                <a th:href="@{/{organizationId}/{projectName} (organizationId = ${organizationId}, projectName = ${proj.projectName}) }">
+                <div  class="cell_table" th:text="${proj.projectName}" ></div>
+                </a>
             </div>
-            <div class="cell">
+            <div class="cell" th:text="${proj.projectCoordinator}">
                 Andrei
             </div>
-            <div class="cell">
+            <div class="cell" th:text="${proj.projectStatus}">
                 Finished
             </div>
         </div>

@@ -43,7 +43,9 @@
     </script>
   </div>
   <h1 style="text-align: center; display: block; margin-left: auto; margin-right: auto; margin-top: 10px;"><span></span>Organization's name</h1>
+
   <div style="margin-top: 100px; text-align: center; display: block; margin-left: auto; margin-right: auto;">
+  <div style="margin-top: 50px; text-align: center; display: block; margin-left: auto; margin-right: auto;">
     <form th:action="@{/addPhotos}" method="post" enctype="multipart/form-data">
       <div class="input-group mb-3">
         <div class="input-group-prepend">
@@ -86,6 +88,8 @@
 <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
   <button type="button" class="btn btn-primary" style="margin-top: 10px; font-size: 30px;" data-bs-toggle="modal" th:data-bs-target="'#modal1'+${photo.id}">Delete</button>
   <button type="button" class="btn btn-primary" style="margin-top: 10px; font-size: 30px;" data-bs-toggle="modal" th:data-bs-target="'#modal2'+${photo.id}">Set as profile picture</button>
+  <button type="button" class="btn btn-primary btn-primary1" style="margin-top: 10px; font-size: 30px;" data-bs-toggle="modal" th:data-bs-target="'#modal1'+${photo.id}">Delete</button>
+  <button type="button" class="btn btn-primary btn-primary1" style="margin-top: 10px; margin-left: 5px; font-size: 30px;" data-bs-toggle="modal" th:data-bs-target="'#modal2'+${photo.id}">Set as profile picture</button>
 
   <div class="modal fade" th:id="'modal1'+${photo.id}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="model1Label" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">

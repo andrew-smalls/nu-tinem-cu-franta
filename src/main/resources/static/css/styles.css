@@ -739,3 +739,8 @@ form.search::after {
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
 }
+
+.btn-primary1 {
+    font-size: 50px;
+    width:100%;
+}
