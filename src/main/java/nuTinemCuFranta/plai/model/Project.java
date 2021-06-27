@@ -31,9 +31,10 @@ public class Project {
     private Double[] projectLocation;
 
 
-    public Project(String projectName, String projectCoordinator) {
+    public Project(String projectName, String projectCoordinator, String projectDescription) {
         this.projectName = projectName;
         this.projectCoordinator = projectCoordinator;
+        this.projectDescription = projectDescription;
         this.projectStatus = "In progress";
     }
 

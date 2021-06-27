@@ -66,7 +66,9 @@ public class OrganizationController {
     @RequestMapping("/home_page_organization/{orgId}")
     public String getOrganizationHomePage(@PathVariable("orgId") Long orgId, Model model) {
         Organization organization = organizationService.getOrganization(orgId);
-        //model.addAttribute("organizationId",organizationId);
+
+        model.addAttribute("organizationId", orgId);
+
         Photo profilePhoto=photoService.getProfilePhoto(orgId);
         if(profilePhoto==null){
             profilePhoto=new Photo();

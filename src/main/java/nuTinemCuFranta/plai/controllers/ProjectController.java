@@ -26,11 +26,12 @@ public class ProjectController {
     @PostMapping("/addProject")
     private String addProject(@RequestParam("projectName") String projectName,
                            @RequestParam("projectCoordinator") String projectCoordinator,
+                           @RequestParam("projectDescription") String projectDescription,
                            @RequestParam("organizationId") Long organizationId
                            ){
 
 
-        Project project = new Project(projectName, projectCoordinator);
+        Project project = new Project(projectName, projectCoordinator, projectDescription);
         project.setOrganizationId(organizationId);
         projectService.addProject(project);
 
@@ -45,8 +46,7 @@ public class ProjectController {
         List<Project> projects = projectService.getProjects();
         model.addAttribute("projects", projects);
 
-        //System.out.println("Organization with projects: " + organization);
-        return "projects";// /" + organizationId;
+        return "projects";
     }
 
 
@@ -54,6 +54,23 @@ public class ProjectController {
     public String deleteProject(@RequestParam("projectId") Long id) {
         projectService.deleteProject(id);
         return "redirect:projects";
+    }
+
+    @RequestMapping("/{organizationId}/{projectName}")
+    public String visitSpecificProjectPage(Model model,
+                                           @PathVariable("organizationId") Long organizationId,
+                                           @PathVariable("projectName") String projectName){
+
+        System.out.println("Proj name is " + projectName);
+
+        model.addAttribute("organizationId", organizationId);
+        model.addAttribute("projectName", projectName);
+
+        Project project = projectService.getProjectByName(projectName);
+
+        System.out.println("Project is " + project);
+
+        return "project_page_organization"; // /" +project.getId();
     }
 
 }
