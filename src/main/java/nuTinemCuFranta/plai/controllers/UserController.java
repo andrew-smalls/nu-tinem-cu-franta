@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -25,6 +24,7 @@ public class UserController {
                            @RequestParam("password") String password,
                            @RequestParam("role") String role
                            ){
+
         User user=new User(firstName,lastName,email,password,role);
         userService.addUser(user);
 
@@ -36,7 +36,7 @@ public class UserController {
         List<User> users=userService.getUsers();
         model.addAttribute("users",users);
 
-        return "users";
+        return "tabelUsers";
     }
 
 }

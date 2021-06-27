@@ -1,5 +1,15 @@
 package nuTinemCuFranta.plai.controllers;
 
+import nuTinemCuFranta.plai.model.Project;
+import nuTinemCuFranta.plai.services.OrganizationService;
+import nuTinemCuFranta.plai.services.ProjectService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import nuTinemCuFranta.plai.model.Organization;
 import nuTinemCuFranta.plai.model.Project;
 import nuTinemCuFranta.plai.model.User;
@@ -25,6 +35,10 @@ public class ProjectController {
 
     @PostMapping("/addProject")
     private String addProject(@RequestParam("projectName") String projectName,
+                              @RequestParam("projectCoordinator") String projectCoordinator,
+                              @RequestParam("projectDescription") String projectDescription,
+                              @RequestParam("organizationId") Long organizationId
+    ){
                            @RequestParam("projectCoordinator") String projectCoordinator,
                            @RequestParam("projectDescription") String projectDescription,
                            @RequestParam("organizationId") Long organizationId
@@ -73,4 +87,5 @@ public class ProjectController {
         return "project_page_organization"; // /" +project.getId();
     }
 
+    }
 }

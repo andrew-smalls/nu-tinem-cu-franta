@@ -9,6 +9,6 @@ import java.util.List;
 public interface OrganizationRepository extends CrudRepository<Organization,Long> {
 
     @Query("SELECT o FROM Organization o WHERE o.name LIKE %?1%")
-    public List<Organization> findByText(String text);
+    List<Organization> findByText(String text);
 
 }

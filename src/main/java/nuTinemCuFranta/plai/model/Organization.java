@@ -26,7 +26,10 @@ public class Organization {
     public Organization() {
     }
 
-    public Organization(Long id, String name, String address, String phoneNumber, String representativeFirstName, String representativeLastName, String description, String webpageLink, String facebookLink, String type, String status) {
+    public Organization(Long id, String name, String address, String phoneNumber,
+                        String representativeFirstName, String representativeLastName,
+                        String description, String webpageLink, String facebookLink, String type) {
+
         this.id = id;
         this.name = name;
         this.address = address;
@@ -37,7 +40,6 @@ public class Organization {
         this.webpageLink = webpageLink;
         this.facebookLink = facebookLink;
         this.type = type;
-        this.status=status;
     }
 
     @Override
@@ -67,14 +69,6 @@ public class Organization {
                 ", facebookLink='" + facebookLink + '\'' +
                 ", type='" + type + '\'' +
                 '}';
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
     }
 
     public Long getId() {
@@ -155,5 +149,13 @@ public class Organization {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getStatus() {
+        return status;
     }
 }

@@ -13,48 +13,59 @@
         <h1 style="margin-bottom: 60px;">Profile Configuration</h1>
     </div>
     <div>
-        <h2 class="info-text"><br>The following information is essential in order </br>for your organization to be accepted. </br>Make sure you give accurate info.</br></b></h2>
+        <h2 class="info-text"><br>The following information is essential in order
+            </br>for your organization to be accepted. </br>Make sure you give accurate info.</br></b></h2>
     </div>
-    <form th:action="@{/process_profile_organization}"  method="post" style="max-width: 600px; margin: 0 auto;" th:object="${organization}" enctype="multipart/form-data"> <!-- userCredentials sent by registrationController -->
+
+    <form th:action="@{/process_profile_organization}"  method="post" style="max-width: 600px;
+            margin: 0 auto;" th:object="${organization}" enctype="multipart/form-data">
+        <!-- userCredentials sent by registrationController -->
         <fieldset>
             <div class="m-3">
                 <div class="form-group form-row">
                     <label for="InputAddress" class="col-form-label col-4">Address:</label>
                     <div class="col-8">
                         <!--<input type="hidden" th:value="${organizationId}" name="organizationId"/> -->
-                        <input type="text" th:field="*{address}" name="address" class="form-control" id="InputAddress" placeholder="Enter address" minlength="2" maxlength="100" required>
+                        <input type="text" th:field="*{address}" name="address" class="form-control"
+                               id="InputAddress" placeholder="Enter address" minlength="2" maxlength="100" required>
                     </div>
                 </div>
+
                 <div class="form-group form-row">
                     <label for="InputPhone" class="col-form-label col-4">Phone number:</label>
                     <div class="col-8">
                         <input type="number" th:field="*{phoneNumber}" name="phoneNumber" class="form-control" id="InputPhone" placeholder="Enter phone number" minlength="10" maxlength="10" required>
                     </div>
                 </div>
+
                 <div class="form-group form-row">
                     <label for="InputFirstName" class="col-form-label col-4">First name:</label>
                     <div class="col-8">
                         <input type="text" th:field="*{representativeFirstName}" name="representativeFirstName" class="form-control" id="InputFirstName" placeholder="Enter first name of the representative" required>
                     </div>
                 </div>
+
                 <div class="form-group form-row">
                     <label for="InputLastName" class="col-form-label col-4">Last name:</label>
                     <div class="col-8">
                         <input type="text" th:field="*{representativeLastName}" name="representativeLastName" class="form-control" id="InputLastName" placeholder="Enter last name" minlength="2" maxlength="50" required>
                     </div>
                 </div>
+
                 <div class="form-group form-row">
                     <label for="InputWebLink" class="col-form-label col-4">Webpage link:</label>
                     <div class="col-8">
                         <input type="text" th:field="*{webpageLink}" name="webpageLink" class="form-control" id="InputWebLink" placeholder="Enter webpage link" minlength="2" maxlength="50">
                     </div>
                 </div>
+
                 <div class="form-group form-row">
                     <label for="InputFacebookLink" class="col-form-label col-4">Facebook link:</label>
                     <div class="col-8">
                         <input type="text" th:field="*{facebookLink}" name="facebookLink" class="form-control" id="InputFacebookLink" placeholder="Enter facebook link" minlength="2" maxlength="50">
                     </div>
                 </div>
+
                 <div class="form-group" style="margin-top: 20px; margin-bottom: 40px; font-size:28px;">
                     <label><b>Now add a short description about your organization:</b></label>
                     <div>
@@ -64,6 +75,7 @@
                         </script>
                     </div>
                 </div>
+
                 <!--<div class="form-group form-row">
                     <label for="InputType" class="col-form-label col-4">Type:</label>
                     <div class="col-8">
