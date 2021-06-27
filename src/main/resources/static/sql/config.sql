@@ -57,3 +57,45 @@ CREATE TABLE `notifications` (
                                  `date` datetime NOT NULL,
                                  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
+
+--create project table
+CREATE TABLE `plai_dev`.`projects` ( `id` INT NOT NULL AUTO_INCREMENT , `project_name` VARCHAR(255) NOT NULL , `project_coordinator` VARCHAR(100) NOT NULL , `project_status` VARCHAR(50) NOT NULL ,  PRIMARY KEY (`id`), UNIQUE `project_name` (`project_name`)) ENGINE = InnoDB;
+
+-- do VolunteerStatus, Volunteer, Task
+CREATE TABLE `plai_dev`.`volunteer_status` (
+    `id` INT NOT NULL AUTO_INCREMENT ,
+    `organizationId` INT NOT NULL  ,
+    `volunteerId` INT NOT NULL ,
+    `projectId` INT NOT NULL ,
+    `currentStatus` VARCHAR(50) ,
+    PRIMARY KEY (`id`)
+    ) ENGINE = InnoDB;
+
+    CREATE TABLE `plai_dev`.`volunteers` (
+    `id` INT NOT NULL AUTO_INCREMENT ,
+    `volunteerName` VARCHAR(50) NOT NULL ,
+    `roles` VARCHAR(500) ,
+    `badges` VARCHAR(500) ,
+    `organizations` VARCHAR(500) ,
+    `currentStatus` VARCHAR(50) ,
+    `profilePictureId` INT ,
+    `description` VARCHAR(500) NOT NULL ,
+    `interests` VARCHAR(500) ,
+    PRIMARY KEY (`id`)
+    ) ENGINE = InnoDB;
+
+     CREATE TABLE `plai_dev`.`tasks` (
+    `id` INT NOT NULL AUTO_INCREMENT ,
+    `projectId` INT NOT NULL ,
+    `taskName` VARCHAR(100) NOT NULL,
+    `taskGiver` VARCHAR(50) NOT NULL,
+    `taskStatus` VARCHAR(50) ,
+    PRIMARY KEY (`id`)
+    ) ENGINE = InnoDB;
+
+    CREATE TABLE `plai_dev`.`task_assignees` (
+        `id` INT NOT NULL AUTO_INCREMENT ,
+        `taskId` INT NOT NULL  ,
+        `volunteerId` INT NOT NULL ,
+        PRIMARY KEY (`id`)
+        ) ENGINE = InnoDB;

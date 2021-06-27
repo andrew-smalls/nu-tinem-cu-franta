@@ -24,18 +24,18 @@ public class PhotoController {
                 photoService.savePhoto(photo, orgId,false);
             }
         });
-        return "redirect:/organization_photos_guests/"+orgId;
+        return "redirect:/organization_photos/"+orgId;
     }
 
     @PostMapping("/deletePhoto")
     public String deletePhoto(@RequestParam("photoId") Long photoId,@RequestParam("orgId") Long orgId){
         photoService.deletePhoto(photoId);
-        return "redirect:/organization_photos_guests/"+orgId;
+        return "redirect:/organization_photos/"+orgId;
     }
 
     @PostMapping("/setAsProfile")
     public String setPhotoAsProfile(@RequestParam("photoId") Long photoId,@RequestParam("orgId") Long orgId){
         photoService.updateProfilePicture(photoId,orgId);
-        return "redirect:/organization_photos_guests/"+orgId;
+        return "redirect:/organization_photos/"+orgId;
     }
 }

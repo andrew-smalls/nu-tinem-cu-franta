@@ -30,6 +30,7 @@
 </nav>
 
 <div class="container_left" >
+
     <div class="circular--portrait1" style="display: block; margin-left: auto; margin-right: auto;">
         <img id="profilePict" th:src="'data:image/'+${profilePhoto.imageType}+';base64,'+${profilePhoto.image}"  />
         <script th:inline="javascript">
@@ -45,10 +46,10 @@
             /*]]>*/
         </script>
     </div>
-    <h1 style="text-align: center; display: block; margin-left: auto; margin-right: auto; margin-top: 10px;" th:text="${org.webpageLink}"><span></span>Contacts</h1>
+    <h1 style="text-align: center; display: block; margin-left: auto; margin-right: auto; margin-top: 10px; font-size: 20px;" th:text="${org.webpageLink}"><span></span>Contacts</h1>
 
-    <h1 style="text-align: center; display: block; margin-left: auto; margin-right: auto; margin-top: 10px;" th:text="'Contact: '+${org.representativeFirstName}+' '+${org.representativeLastName}"><span></span>Representative</h1>
-    <h1 style="text-align: center; display: block; margin-left: auto; margin-right: auto; margin-top: 10px;" th:text="'PhoneNumber: '+${org.phoneNumber}"></h1>
+    <h1 style="text-align: center; display: block; margin-left: auto; margin-right: auto; margin-top: 10px; font-size: 20px;" th:text="'Contact: '+${org.representativeFirstName}+' '+${org.representativeLastName}"><span></span>Representative</h1>
+    <h1 style="text-align: center; display: block; margin-left: auto; margin-right: auto; margin-top: 10px; font-size: 20px;" th:text="'Phone Number: '+${org.phoneNumber}"></h1>
 </div>
 <h1 class="title_center display-2" style="text-align: center; display: block; margin-left: auto; margin-right: auto; margin-top: 100px;" th:text="${org.name}"><span></span>Organization's name</h1>
 <form th:action="@{/acceptOrganisation}" method="post" id="acceptForm">
@@ -63,7 +64,7 @@
 
     <button id="acceptBtn" type="submit" form="acceptForm" class="btn btn-success button_details">Accept</button>
     <button id="revokeBtn" type="submit" form="revokeForm" class="btn btn-success button_details" style="margin-left: 50px;">Revoke</button>
-    <a th:href="@{/organization_photos_guests/{id}(id = ${org.id})}"><button type="button" class="btn btn-success button_details" style="margin-left: 50px;">View photos</button></a>
+    <a th:href="@{/organization_photos/{id}(id = ${org.id})}"><button type="button" class="btn btn-success button_details" style="margin-left: 50px;">View photos</button></a>
 
 </div>
 
