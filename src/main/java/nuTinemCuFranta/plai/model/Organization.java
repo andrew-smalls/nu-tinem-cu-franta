@@ -21,6 +21,7 @@ public class Organization {
     private String webpageLink;
     private String facebookLink;
     private String type;
+    private String status;
 
     public Organization() {
     }
@@ -148,5 +149,13 @@ public class Organization {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getStatus() {
+        return status;
     }
 }

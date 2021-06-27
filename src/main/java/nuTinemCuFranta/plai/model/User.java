@@ -112,6 +112,7 @@ public class User {
         return confirmPassword;
     }
 
+
     public void setConfirmPassword(String confirmPassword){
         this.confirmPassword = confirmPassword;
     }
